@@ -2,9 +2,14 @@
   <nav class="nav">
     <!--  -->
     <div class="left">
-      <div class="menu">
-        <span class="pi pi-bars"></span>
-      </div>
+      <button
+        pButton
+        title="menu"
+        severity="warn"
+        icon="pi pi-bars"
+        class="menu__button"
+        (click)="visible = true"
+      ></button>
       <a routerLink="/" class="logo">
         <div class="logo__icon">
           <svg
@@ -49,3 +54,24 @@
     </div>
   </nav>
 </header>
+
+<p-drawer [(visible)]="visible" header="Farm connect">
+  <p-iconfield class="mobile_search">
+    <p-inputicon styleClass="pi pi-search" />
+    <input type="text" pInputText placeholder="Search..." pSize="large" />
+  </p-iconfield>
+
+  <div class="menu">
+    @for (item of links; track $index) {
+    <a
+      routerLinkActive="active"
+      [routerLink]="item.url"
+      class="menu__link"
+      pRipple
+    >
+      <i class="icon" [class]="item.icon"></i>
+      <span class="label">{{ item.label }}</span>
+    </a>
+    }
+  </div>
+</p-drawer>

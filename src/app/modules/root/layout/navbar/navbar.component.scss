@@ -27,9 +27,9 @@
   flex-shrink: 0;
   gap: 20px;
 
-  .menu span {
-    cursor: pointer;
-    font-size: 20px;
+  .menu__button {
+    height: 40px;
+    width: 40px;
   }
 
   .logo {
@@ -60,7 +60,7 @@
   }
 }
 
-.search input {
+input {
   width: 100%;
 }
 
@@ -77,5 +77,52 @@
 
   .user__button {
     cursor: pointer;
+  }
+}
+
+// MENU
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+
+  .menu__link {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    padding: 16px;
+    gap: 12px;
+
+    color: var(--p-gray-700);
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      background: var(--p-gray-100);
+      color: var(--p-primary-color);
+    }
+
+    &.active {
+      background: var(--p-primary-color);
+      color: var(--p-gray-100);
+    }
+
+    .icon {
+      font-size: 20px;
+    }
+
+    .label {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search {
+    display: none;
   }
 }
