@@ -1,0 +1,113 @@
+@use "mixins" as *;
+
+.app-footer {
+  background-color: #1f2937;
+  padding: 3rem 1rem;
+  color: #e5e7eb;
+
+  .footer-container {
+    @include container;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-brand {
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .icon-bg {
+        background: var(--primary-color);
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        color: white;
+
+        .logo {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          gap: 10px;
+
+          &__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            flex-shrink: 0;
+            padding: 6px;
+
+            background: var(--p-primary-color);
+            color: white;
+
+            height: 40px;
+            width: 40px;
+          }
+
+          h1 {
+            font-size: 20px;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .brand-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+      }
+    }
+
+    .brand-description {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: #9ca3af;
+    }
+  }
+
+  .footer-group {
+    h3 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      display: block;
+      color: #9ca3af;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+
+    .text-primary {
+      color: var(--primary-color);
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid #374151;
+    padding-top: 1.5rem;
+    font-size: 0.75rem;
+    color: #9ca3af;
+  }
+}

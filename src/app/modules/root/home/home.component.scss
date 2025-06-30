@@ -1,0 +1,98 @@
+@use "mixins" as *;
+
+.hero__section {
+  width: 100%;
+  padding-block: 80px;
+  background: linear-gradient(
+    to right,
+    rgb(34 197 94 / 0.1),
+    rgb(249 115 22 / 0.1)
+  );
+
+  .hero__content {
+    @include container;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+
+    @media screen and (min-width: 1000px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .left {
+      .title {
+        font-size: 2rem;
+        font-weight: 700;
+
+        span {
+          color: var(--p-primary-color);
+        }
+      }
+
+      .text {
+        font-size: 16px;
+        margin-top: 16px;
+        margin-bottom: 20px;
+        color: var(--p-gray-700);
+      }
+
+      @media screen and (min-width: 600px) {
+        .title {
+          font-size: 2.5rem;
+        }
+
+        .text {
+          font-size: 20px;
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 40px;
+      gap: 0.75rem;
+
+      &__box {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+
+        background: #fff;
+        font-weight: 500;
+        font-size: 14px;
+
+        border-radius: 90px;
+        padding: 8px 16px;
+        gap: 0.5rem;
+        flex: 1;
+
+        svg {
+          width: 20px;
+          height: 20px;
+          color: var(--p-primary-color);
+        }
+      }
+    }
+
+    .right {
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
