@@ -1,0 +1,29 @@
+@use "mixins" as *;
+
+.products__section {
+  @include container;
+  padding-block: 4rem;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  gap: 20px;
+
+  .title {
+    font-size: 30px;
+    margin-bottom: 8px;
+  }
+
+  .text {
+    color: var(--p-gray-600);
+  }
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
