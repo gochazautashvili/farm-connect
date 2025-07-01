@@ -1,0 +1,16 @@
+<section class="category__section">
+  <h1 class="title">კატეგორიების მიხედვით შოპინგი</h1>
+  <p class="text">
+    აღმოაჩინეთ ახალი, ადგილობრივი პროდუქტები საიმედო ქართული ფერმერებისგან
+  </p>
+
+  <div class="cards">
+    @for (item of categories; track $index) {
+    <div routerLink="/marketplace?category={{ item.name }}" class="card">
+      <div class="icon">{{ item.icon }}</div>
+      <h1 class="title">{{ item.name }}</h1>
+      <p class="text">{{ item.productCount }} პროდუქტი</p>
+    </div>
+    }
+  </div>
+</section>
