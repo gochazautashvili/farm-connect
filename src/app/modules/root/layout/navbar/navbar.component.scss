@@ -2,11 +2,14 @@
 
 .header {
   position: sticky;
+  overflow: hidden;
   z-index: 999;
   inset: 0;
 
   padding-block: 0.75rem;
   background: #ffffff67;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
@@ -26,6 +29,8 @@
   align-items: center;
   flex-shrink: 0;
   gap: 20px;
+
+  animation: fadeInLeft 1s ease-in-out;
 
   .menu__button {
     height: 40px;
@@ -56,12 +61,21 @@
     h1 {
       font-size: 20px;
       font-weight: 700;
+
+      background: linear-gradient(to top left, #10b981 50%, #f97316 50%);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
     }
   }
 }
 
-input {
-  width: 100%;
+.search {
+  animation: searchAnimation 1s ease-in-out;
+
+  input {
+    width: 100%;
+  }
 }
 
 .right {
@@ -69,6 +83,8 @@ input {
   justify-self: end;
   align-items: center;
   gap: 20px;
+
+  animation: fadeInRight 1s ease-in-out;
 
   .cart span {
     font-size: 26px;
@@ -124,5 +140,39 @@ input {
 
   .search {
     display: none;
+  }
+}
+
+// animations
+@keyframes fadeInLeft {
+  from {
+    transform: translateX(-60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 100;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 100;
+  }
+}
+
+@keyframes searchAnimation {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 100;
   }
 }
