@@ -2,5 +2,22 @@
   width: 100%;
   max-width: 1440px;
   margin-inline: auto;
-  padding-inline: 36px;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column-center {
+  @include flex-center();
+  flex-direction: column;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

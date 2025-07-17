@@ -1,0 +1,85 @@
+@use "mixins" as *;
+
+.roadmap__section {
+  padding-block: 4rem;
+  background: var(--p-gray-100);
+
+  @media screen and (max-width: 400px) {
+    padding-block: 3rem;
+  }
+
+  .container {
+    @include container;
+  }
+
+  .title {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+
+    @media screen and (max-width: 400px) {
+      font-size: 24px;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .text {
+    font-size: 18px;
+    text-align: center;
+    color: var(--p-gray-500);
+
+    @media screen and (max-width: 400px) {
+      font-size: 16px;
+    }
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  margin-top: 48px;
+  column-gap: 2rem;
+  row-gap: 3rem;
+
+  .card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--p-primary-color);
+
+      border-radius: 100%;
+      color: white;
+      height: 64px;
+      width: 64px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      margin-block: 24px 16px;
+
+      @media screen and (max-width: 400px) {
+        font-size: 16px;
+        margin-block: 12px 6px;
+      }
+    }
+
+    .text {
+      color: var(--p-gray-500);
+      text-align: center;
+      font-size: 14px;
+
+      @media screen and (max-width: 400px) {
+        font-size: 12px;
+      }
+    }
+  }
+}

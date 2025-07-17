@@ -12,18 +12,31 @@
   margin-bottom: 32px;
   gap: 20px;
 
+  @media screen and (max-width: 768px) {
+    align-items: start;
+    flex-direction: column;
+  }
+
   .title {
     font-size: 30px;
     margin-bottom: 8px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 20px;
+    }
   }
 
   .text {
     color: var(--p-gray-600);
+
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
 }

@@ -66,6 +66,10 @@
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       background-clip: text;
+
+      @media screen and (max-width: 420px) {
+        display: none;
+      }
     }
   }
 }
@@ -178,5 +182,11 @@
   to {
     width: 100%;
     opacity: 100;
+  }
+}
+
+::ng-deep .p-drawer-left {
+  @media screen and (max-width: 400px) {
+    width: 90% !important;
   }
 }

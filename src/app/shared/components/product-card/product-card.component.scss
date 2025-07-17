@@ -23,15 +23,17 @@
       font-weight: 600;
     }
 
-    .rating {
+    .info_center {
       display: flex;
-      align-items: center;
+      align-items: start;
       justify-content: space-between;
+      margin-block: 8px 12px;
+      gap: 12px;
 
-      margin-bottom: 12px;
-      margin-top: 4px;
+      .rating {
+        display: flex;
+        align-items: center;
 
-      h1 {
         display: flex;
         align-items: center;
 
@@ -47,21 +49,21 @@
           font-weight: 500;
           color: var(--p-gray-500);
         }
+
+        p {
+          color: var(--p-gray-500);
+          font-size: 12px;
+        }
       }
 
-      p {
-        color: var(--p-gray-500);
-        font-size: 12px;
-      }
-    }
+      .pricing {
+        font-size: 20px;
+        color: var(--p-primary-color);
 
-    .pricing {
-      font-size: 20px;
-      color: var(--p-primary-color);
-
-      span {
-        font-size: 14px;
-        color: var(--p-gray-500);
+        span {
+          font-size: 14px;
+          color: var(--p-gray-500);
+        }
       }
     }
 
@@ -116,6 +118,10 @@
 
     .btn {
       width: 100%;
+
+      @media screen and (max-width: 320px) {
+        padding-inline: 2px;
+      }
     }
   }
 }
