@@ -1,1 +1,479 @@
-<p>register works!</p>
+<div class="register-container">
+  <div class="register-content">
+    <div class="header">
+      <h1 class="title">Create Your Account</h1>
+      <p class="subtitle">
+        Join our community of farmers and fresh food lovers
+      </p>
+    </div>
+
+    <div class="user-type-toggle">
+      <button
+        type="button"
+        class="toggle-button"
+        [class.active]="userType() === 'consumer'"
+        (click)="setUserType('consumer')"
+      >
+        <i class="pi pi-user"></i>
+        <span>I'm a Consumer</span>
+      </button>
+      <button
+        type="button"
+        class="toggle-button"
+        [class.active]="userType() === 'farmer'"
+        (click)="setUserType('farmer')"
+      >
+        <i class="pi pi-truck"></i>
+        <span>I'm a Farmer</span>
+      </button>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-info">
+        <span>Step {{ currentStep() }} of {{ totalSteps }}</span>
+        <span>{{ progress | number : "1.0-0" }}% Complete</span>
+      </div>
+      <p-progressBar [value]="progress" [showValue]="false"></p-progressBar>
+    </div>
+
+    <p-card class="form-card">
+      <ng-template pTemplate="header">
+        <div class="card-header">
+          <h2 class="card-title">
+            @if (currentStep() === 1) { Personal Information } @if (userType()
+            === 'farmer' && currentStep() === 2) { Farm Details } @if
+            (userType() === 'farmer' && currentStep() === 3) { Products & Photos
+            } @if (userType() === 'farmer' && currentStep() === 4) { Review &
+            Submit } @if (userType() === 'consumer' && currentStep() === 2) {
+            Delivery & Preferences } @if (userType() === 'consumer' &&
+            currentStep() === 3) { Review & Submit }
+          </h2>
+        </div>
+      </ng-template>
+
+      <form [formGroup]="registerForm" class="register-form">
+        @if (currentStep() === 1) {
+        <div class="form-step">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="firstName">First Name</label>
+              <input
+                pInputText
+                id="firstName"
+                formControlName="firstName"
+                placeholder="Enter your first name"
+                [class.p-invalid]="
+                  registerForm.get('firstName')?.invalid &&
+                  registerForm.get('firstName')?.touched
+                "
+              />
+              @if (registerForm.get('firstName')?.invalid &&
+              registerForm.get('firstName')?.touched) {
+              <small class="p-error">First name is required</small>
+              }
+            </div>
+            <div class="form-field">
+              <label for="lastName">Last Name</label>
+              <input
+                pInputText
+                id="lastName"
+                formControlName="lastName"
+                placeholder="Enter your last name"
+                [class.p-invalid]="
+                  registerForm.get('lastName')?.invalid &&
+                  registerForm.get('lastName')?.touched
+                "
+              />
+              @if (registerForm.get('lastName')?.invalid &&
+              registerForm.get('lastName')?.touched) {
+              <small class="p-error">Last name is required</small>
+              }
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <div class="p-input-icon-left">
+              <i class="pi pi-envelope"></i>
+              <input
+                pInputText
+                id="email"
+                type="email"
+                formControlName="email"
+                placeholder="your@email.com"
+                [class.p-invalid]="
+                  registerForm.get('email')?.invalid &&
+                  registerForm.get('email')?.touched
+                "
+              />
+            </div>
+            @if (registerForm.get('email')?.invalid &&
+            registerForm.get('email')?.touched) {
+            <small class="p-error">Valid email is required</small>
+            }
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Phone Number</label>
+            <div class="p-input-icon-left">
+              <i class="pi pi-phone"></i>
+              <input
+                pInputText
+                id="phone"
+                formControlName="phone"
+                placeholder="+995 XXX XXX XXX"
+                [class.p-invalid]="
+                  registerForm.get('phone')?.invalid &&
+                  registerForm.get('phone')?.touched
+                "
+              />
+            </div>
+            @if (registerForm.get('phone')?.invalid &&
+            registerForm.get('phone')?.touched) {
+            <small class="p-error">Valid phone number is required</small>
+            }
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="password">Password</label>
+              <div class="p-input-icon-left">
+                <i class="pi pi-lock"></i>
+                <p-password
+                  id="password"
+                  [feedback]="false"
+                  [toggleMask]="true"
+                  formControlName="password"
+                  placeholder="Create password"
+                  [class.p-invalid]="
+                    registerForm.get('password')?.invalid &&
+                    registerForm.get('password')?.touched
+                  "
+                >
+                </p-password>
+              </div>
+              @if (registerForm.get('password')?.invalid &&
+              registerForm.get('password')?.touched) {
+              <small class="p-error"
+                >Password must be at least 8 characters</small
+              >
+              }
+            </div>
+            <div class="form-field">
+              <label for="confirmPassword">Confirm Password</label>
+              <div class="p-input-icon-left">
+                <i class="pi pi-lock"></i>
+                <p-password
+                  [feedback]="false"
+                  [toggleMask]="true"
+                  id="confirmPassword"
+                  placeholder="Confirm password"
+                  formControlName="confirmPassword"
+                  [class.p-invalid]="
+                    registerForm.get('confirmPassword')?.invalid &&
+                    registerForm.get('confirmPassword')?.touched
+                  "
+                >
+                </p-password>
+              </div>
+              @if (registerForm.hasError('passwordMismatch') &&
+              registerForm.get('confirmPassword')?.touched) {
+              <small class="p-error">Passwords do not match</small>
+              }
+            </div>
+          </div>
+        </div>
+        } @if (userType() === 'farmer' && currentStep() === 2) {
+        <div class="form-step">
+          <div class="form-field">
+            <label for="farmName">Farm Name</label>
+            <input
+              pInputText
+              id="farmName"
+              formControlName="farmName"
+              placeholder="Enter your farm name"
+              [class.p-invalid]="
+                registerForm.get('farmName')?.invalid &&
+                registerForm.get('farmName')?.touched
+              "
+            />
+            @if (registerForm.get('farmName')?.invalid &&
+            registerForm.get('farmName')?.touched) {
+            <small class="p-error">Farm name is required</small>
+            }
+          </div>
+
+          <div class="form-field">
+            <label for="farmLocation">Farm Location</label>
+            <p-dropdown
+              id="farmLocation"
+              optionLabel="label"
+              optionValue="value"
+              [options]="georgianRegions"
+              formControlName="farmLocation"
+              placeholder="Select your region"
+              [class.p-invalid]="
+                registerForm.get('farmLocation')?.invalid &&
+                registerForm.get('farmLocation')?.touched
+              "
+            >
+            </p-dropdown>
+            @if (registerForm.get('farmLocation')?.invalid &&
+            registerForm.get('farmLocation')?.touched) {
+            <small class="p-error">Farm location is required</small>
+            }
+          </div>
+
+          <div class="form-field">
+            <label for="farmSize">Farm Size</label>
+            <p-dropdown
+              id="farmSize"
+              formControlName="farmSize"
+              [options]="farmSizes"
+              optionLabel="label"
+              optionValue="value"
+              placeholder="Select farm size"
+              [class.p-invalid]="
+                registerForm.get('farmSize')?.invalid &&
+                registerForm.get('farmSize')?.touched
+              "
+            >
+            </p-dropdown>
+            @if (registerForm.get('farmSize')?.invalid &&
+            registerForm.get('farmSize')?.touched) {
+            <small class="p-error">Farm size is required</small>
+            }
+          </div>
+
+          <div class="form-field">
+            <label for="farmDescription">Farm Description</label>
+            <textarea
+              pTextarea
+              id="farmDescription"
+              formControlName="farmDescription"
+              placeholder="Tell us about your farm, farming practices, and what makes your products special..."
+              rows="4"
+              [class.p-invalid]="
+                registerForm.get('farmDescription')?.invalid &&
+                registerForm.get('farmDescription')?.touched
+              "
+            >
+            </textarea>
+            @if (registerForm.get('farmDescription')?.invalid &&
+            registerForm.get('farmDescription')?.touched) {
+            <small class="p-error">Farm description is required</small>
+            }
+          </div>
+        </div>
+        } @if (userType() === 'farmer' && currentStep() === 3) {
+        <div class="form-step">
+          <div class="form-field">
+            <label>What types of products do you sell?</label>
+            <p class="field-hint">Select all that apply</p>
+            <div class="checkbox-grid">
+              @for (category of productCategories; track category.value) {
+              <div class="checkbox-item">
+                <p-checkbox
+                  [inputId]="category.value"
+                  [value]="category.value"
+                  [ngModel]="
+                    registerForm
+                      .get('productTypes')
+                      ?.value?.includes(category.value)
+                  "
+                  (onChange)="toggleProductType(category.value)"
+                >
+                </p-checkbox>
+                <label [for]="category.value" class="checkbox-label">
+                  {{ category.label }}
+                </label>
+              </div>
+              }
+            </div>
+            @if (registerForm.get('productTypes')?.invalid &&
+            registerForm.get('productTypes')?.touched) {
+            <small class="p-error"
+              >Please select at least one product type</small
+            >
+            }
+          </div>
+
+          <div class="form-field">
+            <label>Farm Photos</label>
+            <p class="field-hint">Upload photos of your farm and products</p>
+            <p-fileUpload
+              mode="basic"
+              name="farm-photos"
+              accept="image/*"
+              maxFileSize="10000000"
+              [multiple]="true"
+              (onSelect)="onFileSelect($event)"
+              chooseLabel="Choose Files"
+              [showUploadButton]="false"
+              [showCancelButton]="false"
+            >
+            </p-fileUpload>
+            <p class="file-hint">PNG, JPG up to 10MB each</p>
+          </div>
+        </div>
+        } @if (userType() === 'consumer' && currentStep() === 2) {
+        <div class="form-step">
+          <div class="form-field">
+            <label for="deliveryAddress">Delivery Address</label>
+            <div class="p-input-icon-left">
+              <i class="pi pi-map-marker"></i>
+              <input
+                pInputText
+                id="deliveryAddress"
+                formControlName="deliveryAddress"
+                placeholder="Enter your full address"
+                [class.p-invalid]="
+                  registerForm.get('deliveryAddress')?.invalid &&
+                  registerForm.get('deliveryAddress')?.touched
+                "
+              />
+            </div>
+            @if (registerForm.get('deliveryAddress')?.invalid &&
+            registerForm.get('deliveryAddress')?.touched) {
+            <small class="p-error">Delivery address is required</small>
+            }
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="city">City</label>
+              <input
+                pInputText
+                id="city"
+                formControlName="city"
+                placeholder="Enter your city"
+                [class.p-invalid]="
+                  registerForm.get('city')?.invalid &&
+                  registerForm.get('city')?.touched
+                "
+              />
+              @if (registerForm.get('city')?.invalid &&
+              registerForm.get('city')?.touched) {
+              <small class="p-error">City is required</small>
+              }
+            </div>
+            <div class="form-field">
+              <label for="region">Region</label>
+              <p-dropdown
+                id="region"
+                formControlName="region"
+                [options]="georgianRegions"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="Select region"
+                [class.p-invalid]="
+                  registerForm.get('region')?.invalid &&
+                  registerForm.get('region')?.touched
+                "
+              >
+              </p-dropdown>
+              @if (registerForm.get('region')?.invalid &&
+              registerForm.get('region')?.touched) {
+              <small class="p-error">Region is required</small>
+              }
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Shopping Preferences</label>
+            <div class="preferences-grid">
+              <div class="preference-item">
+                <p-checkbox
+                  inputId="organicOnly"
+                  formControlName="organicOnly"
+                  [binary]="true"
+                >
+                </p-checkbox>
+                <label for="organicOnly" class="preference-label">
+                  <i class="pi pi-leaf"></i>
+                  Prefer organic products only
+                </label>
+              </div>
+              <div class="preference-item">
+                <p-checkbox
+                  inputId="localOnly"
+                  formControlName="localOnly"
+                  [binary]="true"
+                >
+                </p-checkbox>
+                <label for="localOnly" class="preference-label">
+                  <i class="pi pi-map-marker"></i>
+                  Prefer local farmers only (within 20km)
+                </label>
+              </div>
+              <div class="preference-item">
+                <p-checkbox
+                  inputId="notifications"
+                  formControlName="notifications"
+                  [binary]="true"
+                >
+                </p-checkbox>
+                <label for="notifications" class="preference-label">
+                  Receive notifications about new products and offers
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        } @if ((userType() === 'farmer' && currentStep() === 4) || (userType()
+        === 'consumer' && currentStep() === 3)) {
+        <div class="form-step review-step">
+          <div class="review-content">
+            <i class="pi pi-check-circle review-icon"></i>
+            <h3 class="review-title">Ready to Submit!</h3>
+            <p class="review-text">
+              @if (userType() === 'farmer') { Your farm profile is complete.
+              Click submit to create your account and start selling. } @else {
+              Your profile is complete. Click submit to create your account and
+              start shopping. }
+            </p>
+          </div>
+        </div>
+        }
+
+        <div class="form-navigation">
+          <p-button
+            label="Previous"
+            icon="pi pi-arrow-left"
+            [outlined]="true"
+            [disabled]="currentStep() === 1"
+            (onClick)="prevStep()"
+          >
+          </p-button>
+
+          @if (currentStep() === totalSteps) {
+          <p-button
+            icon="pi pi-check"
+            [loading]="isLoading()"
+            (onClick)="handleSubmit()"
+            [disabled]="!registerForm.valid"
+            [label]="isLoading() ? 'Creating Account...' : 'Create Account'"
+          >
+          </p-button>
+          } @else {
+          <p-button
+            label="Next"
+            iconPos="right"
+            (onClick)="nextStep()"
+            icon="pi pi-arrow-right"
+            [disabled]="!isStepValid()"
+          >
+          </p-button>
+          }
+        </div>
+      </form>
+    </p-card>
+
+    <div class="login-link">
+      <p>
+        Already have an account?
+        <a routerLink="/auth/login" class="login-link-text">Sign in here</a>
+      </p>
+    </div>
+  </div>
+</div>
