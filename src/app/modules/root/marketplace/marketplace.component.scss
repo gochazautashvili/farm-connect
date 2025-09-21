@@ -1,0 +1,21 @@
+@use "mixins" as *;
+
+.container {
+  @include container;
+  position: relative;
+
+  display: grid;
+  min-height: 100dvh;
+  grid-template-columns: 2.5fr 8fr;
+  gap: 24px;
+
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 6fr 8fr;
+  }
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}

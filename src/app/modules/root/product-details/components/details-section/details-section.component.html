@@ -1,0 +1,80 @@
+<div class="details-section">
+  <!-- Product Title and Description -->
+  <div class="product-header">
+    <h1 class="product-title">{{ product.name }}</h1>
+    <p class="product-description">{{ product.description }}</p>
+  </div>
+
+  <!-- Rating and Reviews -->
+  <div class="rating-section">
+    <p-rating [(ngModel)]="product.rating" [readonly]="true"> </p-rating>
+    <span class="rating-value">{{ product.rating }}</span>
+    <span class="review-count">({{ product.reviewCount }} reviews)</span>
+    <p-tag
+      [value]="product.availability"
+      [severity]="getAvailabilitySeverity()"
+    >
+    </p-tag>
+  </div>
+
+  <!-- Price Section -->
+  <div class="price-section">
+    <div class="price-container">
+      <div class="price-info">
+        <span class="price">₾{{ product.price }}</span>
+        <span class="price-unit">per {{ product.unit }}</span>
+      </div>
+      <div class="stock-info">
+        <p class="stock-label">Stock available</p>
+        <p class="stock-value">{{ product.stock }} {{ product.unit }}</p>
+      </div>
+    </div>
+
+    <!-- Quantity Selector -->
+    <div class="quantity-selector">
+      <span class="quantity-label">Quantity:</span>
+      <p-inputNumber
+        [min]="1"
+        [showButtons]="true"
+        [max]="product.stock"
+        buttonLayout="horizontal"
+        [(ngModel)]="localQuantity"
+        incrementButtonIcon="pi pi-plus"
+        decrementButtonIcon="pi pi-minus"
+        (ngModelChange)="onQuantityChange()"
+        decrementButtonClass="p-button-secondary"
+        incrementButtonClass="p-button-secondary"
+      >
+      </p-inputNumber>
+      <span class="total-price">
+        Total: <strong class="price-highlight">₾{{ totalPrice }}</strong>
+      </span>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <p-button
+        label="Add to Cart"
+        icon="pi pi-shopping-cart"
+        styleClass="add-to-cart-btn"
+        (onClick)="addToCart.emit()"
+      >
+      </p-button>
+      <p-button
+        [icon]="isWishlisted ? 'pi pi-heart-fill' : 'pi pi-heart'"
+        [rounded]="true"
+        [outlined]="true"
+        [styleClass]="isWishlisted ? 'wishlist-active' : ''"
+        (onClick)="toggleWishlist.emit()"
+      >
+      </p-button>
+      <p-button
+        icon="pi pi-share-alt"
+        [rounded]="true"
+        [outlined]="true"
+        (onClick)="share.emit()"
+      >
+      </p-button>
+    </div>
+  </div>
+</div>

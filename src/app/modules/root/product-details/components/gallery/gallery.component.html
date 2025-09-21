@@ -1,0 +1,35 @@
+<div class="product-gallery">
+  <!-- Main Image -->
+  <div class="main-image-container">
+    <p-image
+      [src]="selectedImage"
+      [alt]="productName"
+      [preview]="true"
+      width="100%"
+    >
+    </p-image>
+
+    <!-- Organic Badge -->
+    <p-tag
+      *ngIf="isOrganic"
+      value="Organic"
+      severity="success"
+      icon="pi pi-leaf"
+      class="organic-badge"
+    >
+    </p-tag>
+  </div>
+
+  <!-- Thumbnail Gallery -->
+  <div class="thumbnail-gallery">
+    @for (image of images; track $index; let i = $index) {
+    <div
+      class="thumbnail-wrapper"
+      (click)="selectImage(i)"
+      [class.active]="selectedImageIndex === i"
+    >
+      <img [src]="image" [alt]="productName + ' ' + (i + 1)" title="gallery" />
+    </div>
+    }
+  </div>
+</div>

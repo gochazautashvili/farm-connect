@@ -1,0 +1,26 @@
+<p-card>
+  <div class="delivery-info">
+    <h3 class="delivery-title">
+      <i class="pi pi-truck"></i>
+      Delivery Information
+    </h3>
+    <div class="delivery-details">
+      <div class="detail-row">
+        <span>Estimated delivery:</span>
+        <strong>{{ deliveryInfo.estimatedDays }} days</strong>
+      </div>
+      <div class="detail-row">
+        <span>Shipping cost:</span>
+        <strong>₾{{ deliveryInfo.shippingCost }}</strong>
+      </div>
+      <div class="detail-row">
+        <span>Free shipping over:</span>
+        <strong>₾{{ deliveryInfo.freeShippingOver }}</strong>
+      </div>
+    </div>
+    <div class="guarantee-banner">
+      <i class="pi pi-shield"></i>
+      <span>Fresh guarantee - 100% satisfaction or money back</span>
+    </div>
+  </div>
+</p-card>

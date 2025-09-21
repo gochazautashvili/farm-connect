@@ -1,0 +1,74 @@
+::ng-deep .p-card {
+  .p-card-content {
+    padding: 1.5rem;
+  }
+}
+
+.farmer-profile {
+  display: flex;
+  gap: 1.5rem;
+
+  .farmer-info {
+    flex: 1;
+
+    .farmer-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+
+      .farmer-name {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--text-color);
+        margin: 0;
+      }
+    }
+
+    .farm-name {
+      color: var(--text-color-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .farmer-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-color-secondary);
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+        .star-icon {
+          color: var(--yellow-500);
+        }
+      }
+    }
+
+    .farmer-bio {
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .farmer-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .farmer-profile {
+    flex-direction: column;
+    text-align: center;
+
+    ::ng-deep .p-avatar {
+      margin: 0 auto;
+    }
+  }
+}

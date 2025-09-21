@@ -1,0 +1,44 @@
+@use "mixins" as *;
+
+.product-detail-page {
+  min-height: 100vh;
+  margin-bottom: 48px;
+
+  background-color: var(--surface-ground);
+
+  .breadcrumb-container {
+    @include container;
+
+    background-color: var(--surface-card);
+    border-bottom: 1px solid var(--surface-border);
+    padding: 1rem 0;
+
+    ::ng-deep .p-breadcrumb {
+      background: transparent;
+      padding: 0 2rem;
+      border: none;
+    }
+  }
+
+  .view {
+    @include container;
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .details {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  }
+}

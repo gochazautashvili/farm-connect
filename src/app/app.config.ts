@@ -15,8 +15,11 @@ registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    providePrimeNG({
+      theme: { preset: Aura, options: { darkModeSelector: false } },
+    }),
+
     provideZoneChangeDetection({ eventCoalescing: true }),
-    providePrimeNG({ theme: { preset: Aura } }),
     provideAnimationsAsync(),
     provideRouter(routes),
     provideTranslations(),

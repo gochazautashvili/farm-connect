@@ -1,0 +1,85 @@
+<div class="product-tabs">
+  <p-tabView>
+    <p-tabPanel header="Description">
+      <p-card>
+        <div class="tab-content">
+          <h3 class="tab-title">Product Details</h3>
+          <p class="tab-description">{{ product.longDescription }}</p>
+        </div>
+      </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel header="Nutrition">
+      <p-card>
+        <div class="tab-content">
+          <h3 class="tab-title">Nutrition Information (per 100g)</h3>
+          <div class="nutrition-grid">
+            <div class="nutrition-item">
+              <div class="nutrition-value">
+                {{ product.nutritionInfo.calories }}
+              </div>
+              <div class="nutrition-label">Calories</div>
+            </div>
+            <div class="nutrition-item">
+              <div class="nutrition-value">
+                {{ product.nutritionInfo.protein }}g
+              </div>
+              <div class="nutrition-label">Protein</div>
+            </div>
+            <div class="nutrition-item">
+              <div class="nutrition-value">
+                {{ product.nutritionInfo.carbs }}g
+              </div>
+              <div class="nutrition-label">Carbs</div>
+            </div>
+            <div class="nutrition-item">
+              <div class="nutrition-value">
+                {{ product.nutritionInfo.fiber }}g
+              </div>
+              <div class="nutrition-label">Fiber</div>
+            </div>
+            <div class="nutrition-item">
+              <div class="nutrition-value">
+                {{ product.nutritionInfo.vitaminC }}mg
+              </div>
+              <div class="nutrition-label">Vitamin C</div>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </p-tabPanel>
+
+    <p-tabPanel [header]="'Reviews (' + product.reviewCount + ')'">
+      <div class="reviews-section">
+        <p-card *ngFor="let review of reviews">
+          <div class="review-item">
+            <p-avatar
+              [image]="review.avatar"
+              [label]="review.user.charAt(0)"
+              size="large"
+              shape="circle"
+            >
+            </p-avatar>
+            <div class="review-content">
+              <div class="review-header">
+                <h4 class="reviewer-name">{{ review.user }}</h4>
+                <p-rating [(ngModel)]="review.rating" [readonly]="true">
+                </p-rating>
+                <span class="review-date">{{ formatDate(review.date) }}</span>
+              </div>
+              <p class="review-comment">{{ review.comment }}</p>
+              <div class="review-images" *ngIf="review.images.length > 0">
+                <img
+                  *ngFor="let img of review.images"
+                  [src]="img"
+                  alt="Review image"
+                  class="review-image"
+                />
+              </div>
+            </div>
+          </div>
+        </p-card>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>

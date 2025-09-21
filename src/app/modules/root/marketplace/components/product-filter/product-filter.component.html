@@ -1,0 +1,48 @@
+<aside class="aside">
+  <h1 class="title">Filters</h1>
+
+  <div class="categories">
+    <h1>Categories</h1>
+
+    <div class="wrapper">
+      @for (item of categories; track $index) {
+      <div class="box_wrapper">
+        <label [for]="item" class="box">
+          <p-checkbox
+            [(ngModel)]="filter.categories"
+            [inputId]="item"
+            [value]="item"
+            [name]="item"
+          />
+          <span class="label">{{ item }}</span>
+        </label>
+
+        <span>(23)</span>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="range">
+    <label for="range">Price Range </label>
+    <p-slider
+      min="0"
+      max="1000"
+      id="range"
+      [range]="true"
+      [(ngModel)]="filter.price"
+    />
+
+    <div class="minmax">
+      <span>From: $ {{ filter.price[0] }}</span>
+      <span>To: $ {{ filter.price[1] }}</span>
+    </div>
+  </div>
+
+  <div class="range">
+    <label for="Distance">Maximum Distance</label>
+
+    <p-slider min="0" max="1000" id="Distance" [(ngModel)]="filter.distance" />
+    <p class="desc">Up to {{ filter.distance }} km away</p>
+  </div>
+</aside>

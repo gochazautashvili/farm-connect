@@ -1,0 +1,61 @@
+<p-card>
+  <div class="farmer-profile">
+    <p-avatar
+      [image]="farmer.photo"
+      [label]="farmer.name.charAt(0)"
+      size="xlarge"
+      shape="circle"
+    >
+    </p-avatar>
+    <div class="farmer-info">
+      <div class="farmer-header">
+        <h3 class="farmer-name">{{ farmer.name }}</h3>
+        <p-tag
+          *ngIf="farmer.isVerified"
+          icon="pi pi-verified"
+          value="Verified"
+          severity="success"
+        >
+        </p-tag>
+      </div>
+      <p class="farm-name">{{ farmer.farmName }}</p>
+      <div class="farmer-meta">
+        <span class="meta-item">
+          <i class="pi pi-map-marker"></i>
+          {{ farmer.distance }}km away
+        </span>
+        <span class="meta-item">
+          <i class="pi pi-star-fill star-icon"></i>
+          {{ farmer.rating }} ({{ farmer.reviewCount }} reviews)
+        </span>
+      </div>
+      <p class="farmer-bio">{{ farmer.bio }}</p>
+      <div class="farmer-actions">
+        <p-button
+          label="View Profile"
+          icon="pi pi-eye"
+          [outlined]="true"
+          size="small"
+          (onClick)="viewProfile.emit()"
+        >
+        </p-button>
+        <p-button
+          label="Message"
+          icon="pi pi-comment"
+          [outlined]="true"
+          size="small"
+          (onClick)="messageFarmer.emit()"
+        >
+        </p-button>
+        <p-button
+          label="Quick Message"
+          icon="pi pi-send"
+          [outlined]="true"
+          size="small"
+          (onClick)="quickMessage.emit()"
+        >
+        </p-button>
+      </div>
+    </div>
+  </div>
+</p-card>

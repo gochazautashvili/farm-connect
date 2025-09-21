@@ -74,6 +74,7 @@
   <div class="menu">
     @for (item of links; track $index) {
     <a
+      [routerLinkActiveOptions]="{ exact: true }"
       routerLinkActive="active"
       [routerLink]="item.url"
       class="menu__link"

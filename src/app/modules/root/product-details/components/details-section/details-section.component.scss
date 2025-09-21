@@ -1,0 +1,122 @@
+.details-section {
+  .product-header {
+    margin-bottom: 1.5rem;
+
+    .product-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-description {
+      font-size: 1.125rem;
+      color: var(--text-color-secondary);
+      line-height: 1.6;
+    }
+  }
+
+  .rating-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+
+    .rating-value {
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    .review-count {
+      color: var(--text-color-secondary);
+    }
+  }
+
+  .price-section {
+    border-top: 1px solid var(--surface-border);
+    border-bottom: 1px solid var(--surface-border);
+    padding: 1.5rem 0;
+    margin-bottom: 1.5rem;
+
+    .price-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+
+      .price-info {
+        .price {
+          font-size: 2rem;
+          font-weight: 700;
+          color: var(--primary-color);
+          margin-right: 0.5rem;
+        }
+
+        .price-unit {
+          color: var(--text-color-secondary);
+        }
+      }
+
+      .stock-info {
+        text-align: right;
+
+        .stock-label {
+          font-size: 0.875rem;
+          color: var(--text-color-secondary);
+          margin-bottom: 0.25rem;
+        }
+
+        .stock-value {
+          font-weight: 600;
+          color: var(--text-color);
+        }
+      }
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+
+      .quantity-label {
+        font-weight: 500;
+        color: var(--text-color);
+      }
+
+      ::ng-deep .p-inputnumber {
+        .p-inputnumber-input {
+          width: 4rem;
+          text-align: center;
+        }
+      }
+
+      .total-price {
+        color: var(--text-color-secondary);
+
+        .price-highlight {
+          color: var(--primary-color);
+          font-size: 1.125rem;
+        }
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+
+      ::ng-deep {
+        .add-to-cart-btn {
+          flex: 1;
+        }
+
+        .wishlist-active {
+          .pi-heart-fill {
+            color: var(--red-500);
+          }
+        }
+      }
+    }
+  }
+}

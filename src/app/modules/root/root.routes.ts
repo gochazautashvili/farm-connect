@@ -6,6 +6,15 @@ const routes: Routes = [
     loadComponent: () => import('./layout/layout.component'),
     children: [
       { path: '', loadComponent: () => import('./home/home.component') },
+      {
+        path: 'marketplace',
+        loadComponent: () => import('./marketplace/marketplace.component'),
+      },
+      {
+        path: 'product/:id',
+        loadComponent: () =>
+          import('./product-details/product-details.component'),
+      },
     ],
   },
 ];

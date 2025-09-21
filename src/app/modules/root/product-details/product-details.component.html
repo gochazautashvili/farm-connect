@@ -1,0 +1,49 @@
+<div class="product-detail-page">
+  <!-- Toast for notifications -->
+  <p-toast></p-toast>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-container">
+    <p-breadcrumb [model]="breadcrumbItems" [home]="home"></p-breadcrumb>
+  </div>
+
+  <!-- Main Content -->
+  <div class="view" *ngIf="product">
+    <div class="container">
+      <app-gallery
+        [images]="product.images"
+        [productName]="product.name"
+        [isOrganic]="product.isOrganic"
+      >
+      </app-gallery>
+
+      <div class="details">
+        <app-details-section
+          [product]="product"
+          [quantity]="quantity"
+          (share)="onShare()"
+          (addToCart)="onAddToCart()"
+          [isWishlisted]="isWishlisted"
+          (toggleWishlist)="onToggleWishlist()"
+          (quantityChange)="onQuantityChange($event)"
+        >
+        </app-details-section>
+
+        <app-farmer-details
+          [farmer]="product.farmer"
+          (quickMessage)="onQuickMessage()"
+          (messageFarmer)="onMessageFarmer()"
+          (viewProfile)="onViewFarmerProfile()"
+        >
+        </app-farmer-details>
+
+        <app-delivery-information [deliveryInfo]="product.deliveryInfo">
+        </app-delivery-information>
+      </div>
+    </div>
+
+    <app-tabs [product]="product" [reviews]="reviews"> </app-tabs>
+
+    <app-related-products [products]="relatedProducts"> </app-related-products>
+  </div>
+</div>
