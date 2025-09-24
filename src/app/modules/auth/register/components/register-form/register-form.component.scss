@@ -1,0 +1,152 @@
+.consumer-registration {
+    .form-card {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border: none;
+      border-radius: 0.75rem;
+  
+      .card-header {
+        padding: 1.5rem 1.5rem 0;
+  
+        .card-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #1f2937;
+          margin: 0;
+        }
+      }
+  
+      // Fix for PrimeNG card body class
+      ::ng-deep .p-card-body {
+        padding: 1.5rem;
+      }
+    }
+  
+    .registration-form {
+      .form-step {
+        margin-bottom: 1.5rem;
+      }
+  
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+  
+        @media (max-width: 640px) {
+          grid-template-columns: 1fr;
+        }
+      }
+  
+      .form-field {
+        margin-bottom: 1rem;
+  
+        label {
+          display: block;
+          font-weight: 500;
+          color: #374151;
+          margin-bottom: 0.5rem;
+          font-size: 0.875rem;
+        }
+  
+        .p-input-icon-left {
+          position: relative;
+          width: 100%;
+  
+          i {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 1rem;
+            z-index: 2;
+          }
+  
+          input {
+            width: 100%;
+            padding-left: 2.5rem;
+          }
+        }
+  
+        // Fix for PrimeNG password component
+        ::ng-deep p-password {
+          width: 100%;
+  
+          .p-password {
+            width: 100%;
+  
+            .p-password-input {
+              width: 100%;
+              padding-left: 2.5rem;
+            }
+          }
+        }
+  
+        // Fix for regular input text fields
+        ::ng-deep input[pInputText] {
+          width: 100%;
+        }
+  
+        .p-dropdown {
+          width: 100%;
+        }
+  
+        small.p-error {
+          display: block;
+          margin-top: 0.25rem;
+          font-size: 0.75rem;
+          color: #ef4444;
+        }
+      }
+  
+      .form-navigation {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e5e7eb;
+        margin-top: 1.5rem;
+  
+        // Fix for PrimeNG button
+        ::ng-deep .p-button {
+          min-width: 120px;
+  
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+  
+  // Global PrimeNG overrides for form validation
+  ::ng-deep {
+    .p-invalid {
+      border-color: #ef4444 !important;
+    }
+  
+    .p-error {
+      color: #ef4444;
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      display: block;
+    }
+  
+    // Ensure password component icons are positioned correctly
+    .p-password .p-input-icon-left i {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      font-size: 1rem;
+      z-index: 2;
+    }
+  
+    // Fix password input padding when icon is present
+    .p-input-icon-left .p-password-input {
+      padding-left: 2.5rem;
+    }
+  }

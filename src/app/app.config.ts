@@ -1,17 +1,15 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
-import { registerLocaleData } from '@angular/common';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
-import en from '@angular/common/locales/en';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
+import { MessageService } from 'primeng/api';
 import Aura from '@primeng/themes/aura';
 
-import { provideTranslations } from '@core/providers/i18n.provider';
+import { globalErrorInterceptor } from '@core/https/global-error.interceptor';
+import { JwtAuthInterceptor } from '@core/auth/https/auth.interceptor';
 import { routes } from './app.routes';
-
-registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,10 +17,13 @@ export const appConfig: ApplicationConfig = {
       theme: { preset: Aura, options: { darkModeSelector: false } },
     }),
 
+    provideHttpClient(
+      withInterceptors([globalErrorInterceptor, JwtAuthInterceptor])
+    ),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideAnimationsAsync(),
     provideRouter(routes),
-    provideTranslations(),
-    provideHttpClient(),
+
+    MessageService,
   ],
 };

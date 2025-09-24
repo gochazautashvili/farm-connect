@@ -45,6 +45,9 @@
     </p-iconfield>
 
     <!--  -->
+    @if(user.status === "loading"){
+    <div class="user-loading"></div>
+    }@else if (user.status === "success") {
     <div class="right">
       <div class="cart">
         <span class="pi pi-shopping-cart"></span>
@@ -57,32 +60,39 @@
         />
       </div>
     </div>
+    } @else {
+    <p-button routerLink="/auth/login" class="login_btn">Login</p-button>
+    }
   </nav>
 </header>
 
-<p-drawer class="mobile_menu" [(visible)]="visible" header="Farm connect">
-  <p-iconfield class="mobile_search">
-    <p-inputicon styleClass="pi pi-search" />
-    <input
-      type="text"
-      pInputText
-      pSize="large"
-      placeholder="მოძებნეთ პროდუქტები..."
-    />
-  </p-iconfield>
+<p-drawer [(visible)]="visible" header="Farm connect">
+  <div class="mobile_menu">
+    <p-iconfield class="mobile_search">
+      <p-inputicon styleClass="pi pi-search" />
+      <input
+        type="text"
+        pInputText
+        pSize="large"
+        placeholder="მოძებნეთ პროდუქტები..."
+      />
+    </p-iconfield>
 
-  <div class="menu">
-    @for (item of links; track $index) {
-    <a
-      [routerLinkActiveOptions]="{ exact: true }"
-      routerLinkActive="active"
-      [routerLink]="item.url"
-      class="menu__link"
-      pRipple
-    >
-      <i class="icon" [class]="item.icon"></i>
-      <span class="label">{{ item.label }}</span>
-    </a>
-    }
+    <div class="menu">
+      @for (item of links; track $index) {
+      <a
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active"
+        [routerLink]="item.url"
+        class="menu__link"
+        pRipple
+      >
+        <i class="icon" [class]="item.icon"></i>
+        <span class="label">{{ item.label }}</span>
+      </a>
+      }
+    </div>
+
+    <p-button (onClick)="logout()" class="logout_btn">Logout</p-button>
   </div>
 </p-drawer>

@@ -1,16 +1,18 @@
+import { AuthService } from '@core/auth/services/auth.service';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Component } from '@angular/core';
-
-import { TranslationService } from '@core/i18n/translation.service';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ToastModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  constructor(private translationService: TranslationService) {
-    this.translationService.loadLanguage();
+  private authService = inject(AuthService);
+
+  constructor() {
+    this.authService.loadUser();
   }
 }

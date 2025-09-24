@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="verify-container">
+    <h2>Email Verification</h2>
+    <p>Please enter the 6-digit code we sent to your email.</p>
+
+    <p-inputOtp [(ngModel)]="code" [length]="6"></p-inputOtp>
+
+    <button
+      pButton
+      class="verify-btn"
+      type="button"
+      title="submit"
+      (click)="onVerify()"
+      [disabled]="isLoading"
+      [label]="isLoading ? 'Loading...' : 'Verify Email'"
+    ></button>
+  </div>
+</div>

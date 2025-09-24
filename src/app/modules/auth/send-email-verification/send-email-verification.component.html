@@ -1,0 +1,20 @@
+<div class="verification-container">
+  <div class="card">
+    <h2>Email Verification</h2>
+    <p>Please enter your email to receive a verification link.</p>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        pInputText
+        [(ngModel)]="email"
+        placeholder="Enter your email"
+      />
+    </div>
+
+    <button pButton type="button" [disabled]="isLoading" (click)="onSubmit()">
+      {{ isLoading ? "Sending..." : "Send Verification Email" }}
+    </button>
+  </div>
+</div>

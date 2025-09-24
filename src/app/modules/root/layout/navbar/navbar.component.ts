@@ -1,14 +1,16 @@
 import { RouterModule } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { InputTextModule } from 'primeng/inputtext';
+import { CommonModule } from '@angular/common';
 import { InputIcon } from 'primeng/inputicon';
 import { DrawerModule } from 'primeng/drawer';
 import { IconField } from 'primeng/iconfield';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { PrimeIcons } from 'primeng/api';
-import { CommonModule } from '@angular/common';
+
+import { AuthService } from '@core/auth/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -26,6 +28,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
+  private authService = inject(AuthService);
+
+  public get user() {
+    return this.authService.state();
+  }
+
   public visible: boolean = false;
 
   public links = [
@@ -65,4 +73,8 @@ export class NavbarComponent {
       url: 'help',
     },
   ];
+
+  public logout() {
+    this.authService.logout();
+  }
 }

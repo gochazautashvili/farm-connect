@@ -1,11 +1,12 @@
 .register-container {
-  height: 100vh;
-
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 3rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 100%;
+  min-height: 100dvh;
+
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 .register-content {
@@ -59,290 +60,54 @@
   }
 }
 
-.user-type-toggle {
-  display: flex;
-  background: white;
-  border-radius: 0.5rem;
-  padding: 0.25rem;
+.registration-tabs {
   margin-bottom: 2rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
 
-  .toggle-button {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-    border-radius: 0.375rem;
-    border: none;
-    background: transparent;
-    color: #6b7280;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  ::ng-deep {
+    .p-tabview-nav {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      padding: 0.25rem;
 
-    &:hover {
-      color: #374151;
-    }
-
-    &.active {
-      background: var(--primary-color);
-      color: white;
-    }
-
-    i {
-      font-size: 1.25rem;
-    }
-  }
-}
-
-.progress-section {
-  margin-bottom: 2rem;
-
-  .progress-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.875rem;
-    color: #6b7280;
-    margin-bottom: 0.5rem;
-  }
-}
-
-.form-card {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border: none;
-  border-radius: 0.75rem;
-
-  .card-header {
-    padding: 1.5rem 1.5rem 0;
-
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1f2937;
-      margin: 0;
-    }
-  }
-
-  .p-card-body {
-    padding: 1.5rem;
-  }
-}
-
-.register-form {
-  .form-step {
-    margin-bottom: 1.5rem;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-
-    input {
-      width: 100%;
-    }
-
-    @media (max-width: 640px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .form-field {
-    margin-bottom: 1rem;
-
-    label {
-      display: block;
-      font-weight: 500;
-      color: #374151;
-      margin-bottom: 0.5rem;
-      font-size: 0.875rem;
-    }
-
-    .field-hint {
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin-bottom: 0.5rem;
-    }
-
-    .file-hint {
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin-top: 0.5rem;
-    }
-
-    .p-input-icon-left {
-      position: relative;
-
-      i {
-        position: absolute;
-        left: 0.75rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #9ca3af;
-        font-size: 1rem;
-        z-index: 1;
-      }
-    }
-
-    input {
-      width: 100%;
-      padding-left: 2.5rem;
-    }
-
-    ::ng-deep p-password {
-      width: 100%;
-      display: flex;
-
-      .p-password-input {
-        padding-left: 2.5rem;
-      }
-
-      .p-password {
-        width: 100%;
-      }
-    }
-
-    .p-dropdown {
-      width: 100%;
-    }
-
-    .p-textarea {
-      width: 100%;
-      resize: vertical;
-    }
-
-    .p-fileupload {
-      .p-fileupload-buttonbar {
-        background: transparent;
-        border: 2px dashed #d1d5db;
-        border-radius: 0.5rem;
-        padding: 1.5rem;
-        text-align: center;
-        transition: border-color 0.2s ease;
-
-        &:hover {
-          border-color: var(--primary-color);
-        }
-
-        .p-button {
-          background: transparent;
-          border: 1px solid #d1d5db;
-          color: #6b7280;
-
-          &:hover {
-            background: #f9fafb;
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-          }
-        }
-      }
-    }
-
-    small.p-error {
-      display: block;
-      margin-top: 0.25rem;
-      font-size: 0.75rem;
-      color: #ef4444;
-    }
-  }
-
-  .checkbox-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-    margin-top: 0.5rem;
-
-    @media (max-width: 640px) {
-      grid-template-columns: 1fr;
-    }
-
-    .checkbox-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-
-      .checkbox-label {
-        font-size: 0.875rem;
-        color: #374151;
-        cursor: pointer;
-        margin: 0;
-      }
-    }
-  }
-
-  .preferences-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
-
-    .preference-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-
-      .preference-label {
-        font-size: 0.875rem;
-        color: #374151;
-        cursor: pointer;
-        margin: 0;
+      .p-tabview-nav-link {
+        flex: 1;
         display: flex;
         align-items: center;
-        gap: 0.25rem;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 0.375rem;
+        border: none;
+        background: transparent;
+        color: #6b7280;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: #374151;
+          background: transparent;
+        }
 
         i {
-          color: var(--primary-color);
-          font-size: 1rem;
+          font-size: 1.25rem;
         }
       }
-    }
-  }
 
-  .review-step {
-    text-align: center;
-    padding: 2rem 0;
-
-    .review-content {
-      .review-icon {
-        font-size: 4rem;
-        color: var(--primary-color);
-        margin-bottom: 1rem;
-      }
-
-      .review-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #1f2937;
-        margin-bottom: 0.5rem;
-      }
-
-      .review-text {
-        color: #6b7280;
-        font-size: 0.875rem;
-        line-height: 1.5;
+      .p-tabview-nav-link.p-highlight {
+        background: lightgreen;
+        color: black;
+        border: none;
       }
     }
-  }
 
-  .form-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e5e7eb;
-    margin-top: 1.5rem;
-
-    .p-button {
-      min-width: 120px;
-
-      &:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
+    .p-tabview-panels {
+      background: transparent;
+      border: none;
+      padding: 0;
     }
   }
 }
@@ -366,29 +131,4 @@
       }
     }
   }
-}
-.p-progressbar {
-  height: 0.5rem;
-  border-radius: 0.25rem;
-  background: #e5e7eb;
-
-  .p-progressbar-value {
-    background: var(--primary-color);
-    border-radius: 0.25rem;
-  }
-}
-
-.p-message {
-  margin-top: 0.5rem;
-}
-
-.p-invalid {
-  border-color: #ef4444 !important;
-}
-
-.p-error {
-  color: #ef4444;
-  font-size: 0.75rem;
-  margin-top: 0.25rem;
-  display: block;
 }

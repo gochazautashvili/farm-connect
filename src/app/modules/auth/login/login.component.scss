@@ -1,0 +1,280 @@
+// login.component.scss
+.login-container {
+  min-height: 100vh;
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  width: 100%;
+  max-width: 720px;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 8px 0 0;
+    color: #6c757d;
+    font-size: 14px;
+  }
+}
+
+.form-field {
+  margin-bottom: 24px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #495057;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    &.ng-invalid.ng-touched {
+      border-color: #dc3545;
+    }
+
+    &::placeholder {
+      color: #adb5bd;
+    }
+  }
+
+  // PrimeNG Password component styling
+  ::ng-deep .p-password {
+    width: 100%;
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+    }
+
+    &.ng-invalid.ng-touched input {
+      border-color: #dc3545;
+    }
+
+    .p-password-toggle-icon {
+      margin-top: 0;
+    }
+  }
+
+  .p-error {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+    animation: fadeIn 0.2s ease-in;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  ::ng-deep .p-checkbox {
+    .p-checkbox-box {
+      border-radius: 4px;
+      width: 20px;
+      height: 20px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: #667eea;
+      }
+
+      &.p-highlight {
+        background: #667eea;
+        border-color: #667eea;
+      }
+    }
+
+    .p-checkbox-label {
+      margin-left: 8px;
+      font-size: 14px;
+      color: #495057;
+    }
+  }
+
+  .forgot-password {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #764ba2;
+      text-decoration: underline;
+    }
+  }
+}
+
+// PrimeNG Button styling
+::ng-deep .login-button {
+  width: 100%;
+
+  .p-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    transition: all 0.3s ease;
+
+    &:hover:enabled {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+::ng-deep .google-button {
+  width: 100%;
+
+  .p-button {
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    background: white;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+
+    &:hover:enabled {
+      background: #f8f9fa;
+      border-color: #adb5bd;
+    }
+
+    .p-button-icon {
+      font-size: 18px;
+    }
+  }
+}
+
+// PrimeNG Divider styling
+::ng-deep .divider {
+  margin: 24px 0;
+
+  .p-divider-content {
+    background: white;
+    padding: 0 12px;
+  }
+
+  .divider-text {
+    color: #adb5bd;
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: #6c757d;
+
+  a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #764ba2;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .login-card {
+    padding: 30px 20px;
+  }
+
+  .login-header {
+    h2 {
+      font-size: 24px;
+    }
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    .forgot-password {
+      align-self: flex-end;
+    }
+  }
+}

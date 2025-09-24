@@ -22,6 +22,10 @@
   column-gap: 24px;
   align-items: center;
   grid-template-columns: 1fr 2fr 1fr;
+
+  .login_btn {
+    justify-self: end;
+  }
 }
 
 .left {
@@ -101,44 +105,65 @@
 }
 
 // MENU
-.menu {
+.mobile_menu {
   display: flex;
   flex-direction: column;
-  margin-top: 32px;
+  height: 100%;
 
-  .menu__link {
+  .menu {
     display: flex;
-    align-items: center;
-    border-radius: 12px;
-    padding: 16px;
-    gap: 12px;
+    flex-direction: column;
+    margin-top: 32px;
+    flex: 1;
 
-    color: var(--p-gray-700);
-    transition: all 0.3s ease-in;
+    .menu__link {
+      display: flex;
+      align-items: center;
+      border-radius: 12px;
+      padding: 16px;
+      gap: 12px;
 
-    &:hover {
-      background: var(--p-gray-100);
-      color: var(--p-primary-color);
-    }
+      color: var(--p-gray-700);
+      transition: all 0.3s ease-in;
 
-    &.active {
-      background: var(--p-primary-color);
-      color: var(--p-gray-100);
-    }
+      &:hover {
+        background: var(--p-gray-100);
+        color: var(--p-primary-color);
+      }
 
-    .icon {
-      font-size: 20px;
-    }
+      &.active {
+        background: var(--p-primary-color);
+        color: var(--p-gray-100);
+      }
 
-    .label {
-      font-size: 16px;
-      font-weight: 500;
+      .icon {
+        font-size: 20px;
+      }
+
+      .label {
+        font-size: 16px;
+        font-weight: 500;
+      }
     }
   }
 }
 
 .mobile_search input {
   width: 100%;
+}
+
+.logout_btn {
+  ::ng-deep .p-component {
+    width: 100%;
+  }
+}
+
+.user-loading {
+  width: 120px;
+  justify-self: end;
+  height: 40px;
+  border-radius: 12px;
+  background: #cfcfcf;
 }
 
 @media screen and (max-width: 700px) {

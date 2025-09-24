@@ -1,0 +1,142 @@
+<div class="consumer-registration">
+  <p-card class="form-card">
+    <form [formGroup]="form" class="registration-form">
+      <div class="form-step">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="firstName">First Name</label>
+            <div class="p-input-icon-left">
+              <i class="pi pi-user"></i>
+              <input
+                pInputText
+                id="firstName"
+                formControlName="firstName"
+                placeholder="Enter your first name"
+                [class.p-invalid]="
+                  form.get('firstName')?.invalid &&
+                  form.get('firstName')?.touched
+                "
+              />
+            </div>
+            @if (form.get('firstName')?.invalid &&
+            form.get('firstName')?.touched) {
+            <small class="p-error">First name is required</small>
+            }
+          </div>
+          <div class="form-field">
+            <label for="lastName">Last Name</label>
+            <div class="p-input-icon-left">
+              <i class="pi pi-user"></i>
+              <input
+                pInputText
+                id="lastName"
+                formControlName="lastName"
+                placeholder="Enter your last name"
+                [class.p-invalid]="
+                  form.get('lastName')?.invalid && form.get('lastName')?.touched
+                "
+              />
+            </div>
+            @if (form.get('lastName')?.invalid && form.get('lastName')?.touched)
+            {
+            <small class="p-error">Last name is required</small>
+            }
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email Address</label>
+          <div class="p-input-icon-left">
+            <i class="pi pi-envelope"></i>
+            <input
+              pInputText
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="your@email.com"
+              [class.p-invalid]="
+                form.get('email')?.invalid && form.get('email')?.touched
+              "
+            />
+          </div>
+          @if (form.get('email')?.invalid && form.get('email')?.touched) {
+          <small class="p-error">Valid email is required</small>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="phone">Phone Number</label>
+          <div class="p-input-icon-left">
+            <i class="pi pi-phone"></i>
+            <input
+              pInputText
+              id="phone"
+              formControlName="phone"
+              placeholder="+995 XXX XXX XXX"
+              [class.p-invalid]="
+                form.get('phone')?.invalid && form.get('phone')?.touched
+              "
+            />
+          </div>
+          @if (form.get('phone')?.invalid && form.get('phone')?.touched) {
+          <small class="p-error">Valid phone number is required</small>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="password">Password</label>
+          <div class="p-input-icon-left">
+            <i class="pi pi-lock"></i>
+            <p-password
+              id="password"
+              [feedback]="false"
+              [toggleMask]="true"
+              formControlName="password"
+              placeholder="Create password"
+              [class.p-invalid]="
+                form.get('password')?.invalid && form.get('password')?.touched
+              "
+            >
+            </p-password>
+          </div>
+          @if (form.get('password')?.invalid && form.get('password')?.touched) {
+          <small class="p-error">Password must be at least 8 characters</small>
+          }
+        </div>
+        <div class="form-field">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="p-input-icon-left">
+            <i class="pi pi-lock"></i>
+            <p-password
+              [feedback]="false"
+              [toggleMask]="true"
+              id="confirmPassword"
+              placeholder="Confirm password"
+              formControlName="confirmPassword"
+              [class.p-invalid]="
+                form.get('confirmPassword')?.invalid &&
+                form.get('confirmPassword')?.touched
+              "
+            >
+            </p-password>
+          </div>
+          @if (form.hasError('passwordMismatch') &&
+          form.get('confirmPassword')?.touched) {
+          <small class="p-error">Passwords do not match</small>
+          }
+        </div>
+      </div>
+
+      <div class="form-navigation">
+        <p-button
+          icon="pi pi-check"
+          [loading]="isLoading()"
+          (onClick)="handleSubmit()"
+          [disabled]="!form.valid"
+          [label]="isLoading() ? 'Creating Account...' : 'Create Account'"
+        >
+        </p-button>
+      </div>
+    </form>
+  </p-card>
+</div>

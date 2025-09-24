@@ -1,1 +1,81 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>Welcome Back</h2>
+      <p>Please login to your account</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input
+          pInputText
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.ng-invalid]="isFieldInvalid('email')"
+        />
+        <small class="p-error" *ngIf="isFieldInvalid('email')">
+          <span *ngIf="form.get('email')?.errors?.['required']"
+            >Email is required</span
+          >
+          <span *ngIf="form.get('email')?.errors?.['email']"
+            >Please enter a valid email</span
+          >
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="password">Password</label>
+        <p-password
+          id="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          [toggleMask]="true"
+          [feedback]="false"
+          styleClass="w-full"
+          inputStyleClass="w-full"
+          [class.ng-invalid]="isFieldInvalid('password')"
+        ></p-password>
+        <small class="p-error" *ngIf="isFieldInvalid('password')">
+          <span *ngIf="form.get('password')?.errors?.['required']"
+            >Password is required</span
+          >
+          <span *ngIf="form.get('password')?.errors?.['minlength']"
+            >Password must be at least 6 characters</span
+          >
+        </small>
+      </div>
+
+      <div class="form-options">
+        <a routerLink="/auth/forgot-password" class="forgot-password">
+          Forgot password?
+        </a>
+      </div>
+
+      <p-button
+        label="Login"
+        type="submit"
+        [loading]="isLoading"
+        styleClass="w-full login-button"
+        [disabled]="form.invalid || isLoading"
+      ></p-button>
+
+      <p-divider align="center" styleClass="divider">
+        <span class="divider-text">OR</span>
+      </p-divider>
+
+      <p-button
+        label="Sign in with Google"
+        icon="pi pi-google"
+        styleClass="w-full google-button"
+        severity="secondary"
+      ></p-button>
+    </form>
+
+    <div class="signup-link">
+      Don't have an account? <a routerLink="/auth/register">Sign up</a>
+    </div>
+  </div>
+</div>
